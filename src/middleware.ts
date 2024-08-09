@@ -18,15 +18,13 @@ async function isAuthenticated(req: NextRequest) {
     .toString()
     .split(':')
 
-  // Turn off authentication for amplify hosted app
-  return true
-  // return (
-  //   username === process.env.ADMIN_USERNAME &&
-  //   (await isValidPassword(
-  //     password,
-  //     process.env.HASHED_ADMIN_PASSWORD as string
-  //   ))
-  // )
+  return (
+    username === process.env.ADMIN_USERNAME &&
+    (await isValidPassword(
+      password,
+      process.env.HASHED_ADMIN_PASSWORD as string
+    ))
+  )
 }
 
 export const config = {
